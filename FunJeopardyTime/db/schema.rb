@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20171109012211) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string "text"
-    t.boolean "correct"
+    t.string "text", null: false
+    t.boolean "correct", default: false, null: false
     t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20171109012211) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
+    t.string "name", null: false
+    t.string "kind", null: false
     t.bigint "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,15 +34,15 @@ ActiveRecord::Schema.define(version: 20171109012211) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "name"
-    t.integer "score"
+    t.string "name", null: false
+    t.integer "score", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "text"
-    t.string "difficulty"
+    t.string "text", null: false
+    t.string "difficulty", null: false
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
